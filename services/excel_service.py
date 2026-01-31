@@ -1,13 +1,11 @@
 from openpyxl import Workbook, load_workbook
 from config.settings import EXCEL_PATH, TABLE_HEADERS
-import os
-
 
 class ExcelService:
 
     @staticmethod
     def save(date, name, number):
-        if os.path.exists(EXCEL_PATH):
+        if EXCEL_PATH.exists():
             wb = load_workbook(EXCEL_PATH)
             ws = wb.active
         else:
@@ -20,7 +18,7 @@ class ExcelService:
 
     @staticmethod
     def get_all():
-        if not os.path.exists(EXCEL_PATH):
+        if not EXCEL_PATH.exists():
             return []
 
         wb = load_workbook(EXCEL_PATH)
@@ -38,7 +36,7 @@ class ExcelService:
         Supprime une ligne spécifique dans le fichier Excel.
         row_index : ligne dans Excel (1 = header)
         """
-        if not os.path.exists(EXCEL_PATH):
+        if not EXCEL_PATH.exists():
             return
 
         wb = load_workbook(EXCEL_PATH)
@@ -53,7 +51,7 @@ class ExcelService:
 
     @staticmethod
     def delete_all():
-        if not os.path.exists(EXCEL_PATH):
+        if not EXCEL_PATH.exists():
             return
 
         wb = load_workbook(EXCEL_PATH)

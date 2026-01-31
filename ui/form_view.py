@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkcalendar import DateEntry
-from config.settings import FORM_LABELS
+from config.settings import FORM_LABELS, EXCEL_PATH
 
 
 class FormView(tk.Frame):
@@ -73,5 +73,6 @@ class FormView(tk.Frame):
             self.on_delete_callback()
 
     def clear(self):
-        for entry in self.entries.values():
+        for label, entry in self.entries.items():
+            if label == "Date": continue
             entry.delete(0, tk.END)
