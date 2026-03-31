@@ -1,5 +1,6 @@
 from openpyxl import Workbook, load_workbook
 from config.settings import EXCEL_PATH, TABLE_HEADERS
+from services.date_service import get_month_key, get_month_label
 
 class ExcelService:
 
@@ -29,6 +30,19 @@ class ExcelService:
             data.append(row)
 
         return data
+
+    @staticmethod
+    def get_months():
+        data = ExcelService.get_all()
+
+        months = {}
+        for row in data:
+            date_str = row[0]
+            key = get_month_key(date_str)
+            label = get_month_label(date_str)
+            months[key] = label  # évite les doublons
+
+        return months  # dict { "2026-01": "Janvier 2026" }
 
     @staticmethod
     def delete_row(row_index):

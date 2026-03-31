@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkcalendar import DateEntry
-from config.settings import FORM_LABELS, EXCEL_PATH
+from config.settings import FORM_LABELS
 
 
 class FormView(tk.Frame):
@@ -29,7 +29,7 @@ class FormView(tk.Frame):
             self.entries[label] = entry
 
         button_frame = tk.Frame(self)
-        button_frame.grid(row=len(FORM_LABELS), columnspan=2, pady=10)
+        button_frame.grid(row=len(FORM_LABELS), columnspan=2, pady=(10, 0))
 
         tk.Button(
             button_frame,
