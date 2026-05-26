@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from config.settings import TABLE_HEADERS, FORM_LABELS
+from config.settings import TABLE_HEADERS
 from services.date_service import get_month_key, get_month_label
 
 
@@ -44,7 +44,7 @@ class TableView(tk.Frame):
             state="readonly",
             width=20
         )
-        self.month_combo.pack(side=tk.LEFT, pady=(0, 10))
+        self.month_combo.pack(fill=tk.BOTH, expand=True, pady=(0, 5))
 
         self.month_combo.bind("<<ComboboxSelected>>", self.on_month_change)
         
